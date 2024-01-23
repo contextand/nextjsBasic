@@ -1,20 +1,9 @@
-"use client";
 import Link from "next/link";
 import "./globals.css";
-import { useEffect, useState } from "react";
 
-//
-
-export default function RootLayout({ children }) {
-  const [topics, setTopics] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:9999/topics")
-      .then((resp) => resp.json())
-      .then((result) => {
-        setTopics(result);
-      });
-  }, []);
-  console.log(topics);
+export default async function RootLayout({ children }) {
+  const resp = await fetch("http://localhost:9999/topics");
+  const topics = await resp.json();
   return (
     <html>
       <body>
@@ -25,7 +14,11 @@ export default function RootLayout({ children }) {
           {topics.map((topic) => {
             return (
               <li key={topic.id}>
-                <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+                <Link href={`/read/${topic.id}`}>
+                  {topic.title}
+                  <br />
+                  {topic.body}
+                </Link>
               </li>
             );
           })}
