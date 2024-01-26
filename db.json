@@ -1,11 +1,39 @@
 {
   "topics": [
-    { "id": 1, "title": "html", "body": "html is .." },
-    { "id": 2, "title": "css", "body": "css is .." }
+    {
+      "id": "1",
+      "title": "html",
+      "body": "html is .."
+    },
+    {
+      "id": "2",
+      "title": "css",
+      "body": "css is .."
+    },
+    {
+      "id": "86bb",
+      "title": "javascript",
+      "body": "test body text"
+    },
+    {
+      "id": "1bd8",
+      "title": "react",
+      "body": "re act is wonderful"
+    },
+    {
+      "id": "2c91",
+      "title": " backend",
+      "body": "what the fong"
+    },
+    {
+      "id": "813f",
+      "title": "test",
+      "body": "reaction?!"
+    }
   ],
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
       "author": "typicode"
     }

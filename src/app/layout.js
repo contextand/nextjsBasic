@@ -2,7 +2,9 @@ import Link from "next/link";
 import "./globals.css";
 
 export default async function RootLayout({ children }) {
-  const resp = await fetch("http://localhost:9999/topics");
+  const resp = await fetch("http://localhost:9999/topics", {
+    cache: "no-store",
+  });
   const topics = await resp.json();
   return (
     <html>
