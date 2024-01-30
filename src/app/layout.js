@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import { Control } from "./Control";
 
 export default async function RootLayout({ children }) {
   const resp = await fetch("http://localhost:9999/topics", {
@@ -16,27 +17,13 @@ export default async function RootLayout({ children }) {
           {topics.map((topic) => {
             return (
               <li key={topic.id}>
-                <Link href={`/read/${topic.id}`}>
-                  {topic.title}
-                  <br />
-                  {topic.body}
-                </Link>
+                <Link href={`/read/${topic.id}`}>{topic.title}</Link>
               </li>
             );
           })}
         </ol>
         {children}
-        <ul>
-          <li>
-            <Link href="/create">Create</Link>
-          </li>
-          <li>
-            <Link href="/update/1">Update</Link>
-          </li>
-          <li>
-            <input type="button" value="delete"></input>
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
