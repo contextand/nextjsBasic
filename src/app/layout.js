@@ -4,7 +4,7 @@ import { Control } from "./Control";
 
 export default async function RootLayout({ children }) {
   const resp = await fetch("http://localhost:9999/topics", {
-    cache: "no-store",
+    next: { revalidate: 0 },
   });
   const topics = await resp.json();
   return (
@@ -13,7 +13,7 @@ export default async function RootLayout({ children }) {
         <h1>
           <Link href="/">WEB</Link>
         </h1>
-        <ol>
+        <ol className="list">
           {topics.map((topic) => {
             return (
               <li key={topic.id}>

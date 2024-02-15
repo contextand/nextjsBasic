@@ -30,10 +30,11 @@ export default function Update() {
           },
           body: JSON.stringify({ title, body }),
         };
-        fetch(`http://localhost:9999/topics/` + id, options)
+        fetch(`http://localhost:9999/topics/` + id, options, {
+          cache: "no-store",
+        })
           .then((res) => res.json())
           .then((result) => {
-            console.log(result);
             const lastid = result.id;
             router.refresh();
             router.push(`/read/${lastid}`);

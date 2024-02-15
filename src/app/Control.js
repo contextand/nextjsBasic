@@ -16,7 +16,18 @@ export function Control() {
             <Link href={"/update/" + id}>Update</Link>
           </li>
           <li>
-            <input type="button" value="delete"></input>
+            <input
+              type="button"
+              value="delete"
+              onClick={async () => {
+                const resp = await fetch("http://localhost:9999/topics/${id}", {
+                  method: "DELETE",
+                });
+                await resp.json();
+                router.push();
+                router.refresh();
+              }}
+            ></input>
           </li>
         </>
       ) : null}
