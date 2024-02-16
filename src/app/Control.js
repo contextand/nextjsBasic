@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 export function Control() {
+  const router = useRouter();
   const params = useParams();
   const id = params.id;
   return (
@@ -20,7 +21,7 @@ export function Control() {
               type="button"
               value="delete"
               onClick={async () => {
-                const resp = await fetch("http://localhost:9999/topics/${id}", {
+                const resp = await fetch("http://localhost:9999/topics/" + id, {
                   method: "DELETE",
                 });
                 await resp.json();

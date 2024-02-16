@@ -3,7 +3,7 @@ import "./globals.css";
 import { Control } from "./Control";
 
 export default async function RootLayout({ children }) {
-  const resp = await fetch("http://localhost:9999/topics", {
+  const resp = await fetch("http://localhost:9999/topics/", {
     next: { revalidate: 0 },
   });
   const topics = await resp.json();
